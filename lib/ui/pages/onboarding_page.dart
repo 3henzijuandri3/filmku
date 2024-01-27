@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
 
 import '../../shared/theme.dart';
 import '../../shared/values.dart';
 import '../widgets/button_custom.dart';
 
 class OnBoardingPage extends StatelessWidget {
-  const OnBoardingPage({super.key});
+  OnBoardingPage({super.key});
+
+  final FlutterSecureStorage localStorage = FlutterSecureStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +70,9 @@ class OnBoardingPage extends StatelessWidget {
                     height: 50,
                     label: 'Get Started',
                     isNeon: true,
-                    onTap: (){
-
+                    onTap: () async {
+                      await localStorage.write(key: 'isBoarding', value: 'yes');
+                      Get.offAllNamed('/');
                     }
                 ),
 
