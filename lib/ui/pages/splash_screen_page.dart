@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-// Import your OnBoardingPage here
-// Import your NavigationPage here
 import '../../shared/values.dart';
 
 class SplashScreenPage extends StatefulWidget {
