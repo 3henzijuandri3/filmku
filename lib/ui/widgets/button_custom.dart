@@ -8,6 +8,8 @@ class FilledButtonCustom extends StatelessWidget {
   final String label;
   final bool? isNeon;
   final Function onTap;
+  final double? labelSize;
+  final Color? color;
 
   const FilledButtonCustom({
     super.key,
@@ -15,7 +17,7 @@ class FilledButtonCustom extends StatelessWidget {
     required this.height,
     required this.label,
     required this.onTap,
-    this.isNeon
+    this.isNeon, this.labelSize, this.color
   });
 
   @override
@@ -42,7 +44,7 @@ class FilledButtonCustom extends StatelessWidget {
         onPressed: () => onTap(),
 
         style: TextButton.styleFrom(
-          backgroundColor: purpleColor,
+          backgroundColor: color ?? purpleColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(56)
           ),
@@ -51,7 +53,7 @@ class FilledButtonCustom extends StatelessWidget {
         child: Text(
           label,
           style: whiteTextStyle.copyWith(
-              fontSize: 16,
+              fontSize: labelSize ?? 16,
               fontWeight: semiBold
           ),
         ),
@@ -75,8 +77,8 @@ class MenuButtonCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 90,
-      height: 110,
+      width: 120,
+      height: 120,
 
       decoration: BoxDecoration(
         color: isSelected ? purpleColor : whiteColor,
@@ -92,11 +94,11 @@ class MenuButtonCustom extends StatelessWidget {
             padding: EdgeInsets.all(8),
 
             decoration: BoxDecoration(
-              color: whiteColor,
+              color: isSelected ? whiteColor : purpleColor,
               shape: BoxShape.circle,
             ),
 
-            child: Icon(menuIcon, color: purpleColor, size: 26),
+            child: Icon(menuIcon, color: isSelected ? purpleColor : whiteColor, size: 34),
           ),
 
           const SizedBox(height: 10),
@@ -107,7 +109,7 @@ class MenuButtonCustom extends StatelessWidget {
                 ? whiteTextStyle
                 : blackTextStyle)
                 .copyWith(
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: semiBold
             ),
           ),
